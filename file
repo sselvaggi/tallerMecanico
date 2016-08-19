@@ -1,0 +1,89 @@
+
+Pontificia Universidad Católica Argentina
+Diplomado Universitario en Desarrollo de Mobile Apps
+Trabajo Práctico: Taller mecánico
+Se necesita desarrollar una aplicación que permita a los mecánicos de un taller mecánico
+registrar, consultar y actualizar los trabajos (reparaciones y revisiones) que han sido
+realizados o que están en proceso de realización en el taller.
+Cada trabajo se identifica unívocamente por un código, que es un número que se asocia con
+el trabajo en el momento que se registra, a partir del 1 e incrementándose en una unidad por
+cada trabajo nuevo.
+Los trabajos incluyen una descripción de la reparación o revisión a realizar.
+Todos los trabajos incluyen el número de horas necesarias para su realización. Al crear un
+trabajo, el número de horas es 0, que irá aumentando a medida que los mecánicos vayan
+dedicándole horas hombre. Cuando el trabajo ha finalizado, se marcará como “finalizado”,
+por lo que el número de horas ya no podrá incrementarse.
+Las reparaciones incluyen el precio del material utilizado (piezas o pintura). Al igual que con
+las horas necesarias, el precio del material es 0 y se irá incrementando a medida que los
+mecánicos lo requieran, y no podrá ser modificado una vez finalizado el trabajo.
+El precio final a cobrar por cada trabajo se compone de un costo base que resulta de
+multiplicar el número de horas empleadas por $100. Además, dependiendo del tipo de
+trabajo, el costo variará de la siguiente forma:
+•
+reparación mecánica: al costo base se le suma el costo del material multiplicado por
+1.25
+•
+reparación de chapa y pintura: al costo base se le suma el costo del material
+multiplicado por 1.5
+•
+revisión: al costo base se le suma un extra de $200, independientemente del número
+de horas trabajado.
+El taller tiene definidos plazos máximos de entrega de los trabajos: 21 días para las
+reparaciones de chapa y pintura, 14 para las reparaciones mecánicas y 7 para las
+revisiones.
+Para incentivar las revisiones y las reparaciones mecánicas, existe una promoción que
+descuenta un 20% al precio final.
+Página 1 de 3Pontificia Universidad Católica Argentina
+Diplomado Universitario en Desarrollo de Mobile Apps
+Se pide:
+1 Enumerar las clases que se desprenden del enunciado
+2 Armar un diagrama que muestre las relaciones existentes entre las distintas clases
+identificadas en el punto anterior
+3
+Codificar una solución en Java que refleje el enunciado, teniendo en cuenta lo
+siguiente:
+•
+la aplicación le deberá mostrar al usuario un menú con las distintas acciones que
+puede realizar, más la opción “Salir”, que terminará el programa.
+–
+“Registrar un trabajo”, que le deberá permitir al usuario elegir qué tipo de
+trabajo quiere registrar para luego ingresar los datos del mismo.
+–
+“Mostrar trabajos pendientes”, que le mostrará al usuario un listado de todos
+los trabajos que aún no se encuentran finalizados.
+–
+“Dar de baja un trabajo”, que le permitirá al usuario eliminar del registro un
+trabajo por haber sido cancelado.
+–
+“Mostrar trabajos finalizados”, que le mostrará al usuario un listado de todos
+los trabajos finalizados.
+–
+“Calcular precio de trabajo”, que a partir de un código, mostrará el costo de
+dicho trabajo. En caso de no estar finalizado, deberá indicarlo.
+–
+“Registrar horas”, que permitirá, a partir de un código de trabajo, actualizar
+sus horas con las ingresadas por el usuario.
+–
+“Registrar materiales”, que permitirá, a partir de un código de trabajo,
+actualizar el costo de materiales registrado hasta el momento. Dicho valor
+será también ingresado por el usuario.
+–
+“Verificar horas disponibles”, que a partir de un código de trabajo, permitirá
+consultar cuántas horas tiene aún disponibles dicho trabajo, antes de retrasar
+su finalización.
+–
+“Totalizar descuentos”, que mostrará la sumatoria de lo descontado a todas
+las revisiones finalizadas.
+Página 2 de 3Pontificia Universidad Católica Argentina
+Diplomado Universitario en Desarrollo de Mobile Apps
+Notas a tener en cuenta:
+a) Utilizar de manera apropiada los conceptos de herencia y polimorfismo al reflejar en
+clases lo expuesto en el enunciado
+b) Definir la interfaz EnPromoción, con su método Double precioDePromocion() para
+implementar dicho comportamiento en las clases correspondientes
+c) Mientras el usuario no seleccione la opción “Salir”, el programa le deberá seguir
+permitiendo realizar acciones
+d) Se deberá entregar un archivo comprimido que contenga el proyecto en Java y un
+archivo en formato pdf con los puntos 1 y 2. El nombre del archivo deberá seguir el
+siguiente formato: DDMA-GrupoXX.zip donde XX es el número de grupo asignado.
+Página 3 de 3

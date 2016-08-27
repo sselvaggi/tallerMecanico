@@ -4,11 +4,11 @@ public class Trabajo {
 	private boolean pendiente=true;
 	public static void registrar() {
 		// TODO Auto-generated method stub
-		System.out.println("Qué tipo de trabajo?");
-		System.out.println("1 Reparación mecánica");
-		System.out.println("2 Reparación chapa y pintura");
-		System.out.println("3 Revisión");
-		
+		System.out.println("Tipos de trabajos");
+		System.out.println("1 ReparaciÃ³n mecÃ¡nica");
+		System.out.println("2 ReparaciÃ³n chapa y pintura");
+		System.out.println("3 RevisiÃ³n");
+		System.out.print("QuÃ© tipo de trabajo? ");
 		Integer opcion = Taller.teclado.nextInt();
 		
 		switch(opcion){

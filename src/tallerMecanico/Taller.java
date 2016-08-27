@@ -3,6 +3,7 @@ package tallerMecanico;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Taller {
 	public static Scanner teclado;
@@ -10,12 +11,13 @@ public class Taller {
 	private static Integer ultimoID=1;
 	public static String separador="---------------------------------------------------";
 	public static void main(String[] args) {
-
+		Taller.teclado=new Scanner(System.in);
 		Taller.trabajos=new HashMap<Integer, Trabajo>();
 		boolean salir=false;
 		do{
+			Iterator<Integer> it = Taller.trabajos.keySet().iterator();
+			Trabajo currentTrabajo;
 			System.out.println(Taller.separador);
-			System.out.println("ingrese una opción:");
 			System.out.println("1 Registrar un trabajo");
 			System.out.println("2 Mostrar trabajos pendientes");
 			System.out.println("3 Dar de baja un trabajo");
@@ -26,21 +28,18 @@ public class Taller {
 			System.out.println("8 Verificar horas disponibles");
 			System.out.println("9 Totalizar descuentos");
 			
-			Taller.teclado=new Scanner(System.in);
+			System.out.print("Ingrese una opciÃ³n: ");
 			Integer opcion = teclado.nextInt();
-			
+			System.out.println(Taller.separador);			
 			switch(opcion){
 			case 1:
 				Trabajo.registrar();
 				break;
 			case 2:
-				Trabajo t;
-			
-				Iterator<Trabajo> it = trabajos.values().iterator();
 				while(it.hasNext()){
-					t = it.next();
-					if (t.isPendiente()){
-						t.mostrar();
+					currentTrabajo = Taller.trabajos.get(it.next());
+					if (currentTrabajo.isPendiente()){
+						currentTrabajo.mostrar();
 					}
 				}
 				break;
@@ -48,6 +47,15 @@ public class Taller {
 				System.out.println("Ingrese el ID del trabajo que desea borrar: ");
 				Integer key=teclado.nextInt();
 				Taller.trabajos.remove(key);
+				break;
+			case 4:
+				while(it.hasNext()) {
+					currentTrabajo = Taller.trabajos.get(it.next());
+					if(!currentTrabajo.isPendiente()) {
+						currentTrabajo.mostrar();
+					}
+				}
+				break;
 			case 9:
 				salir=true;
 				break;

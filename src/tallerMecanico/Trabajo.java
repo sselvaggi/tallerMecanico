@@ -1,14 +1,16 @@
 package tallerMecanico;
 
-public class Trabajo {
+public abstract class Trabajo {
 	private boolean pendiente=true;
+	private double horas;
+	protected final double horasDiarias = 8;
 	public static void registrar() {
 		// TODO Auto-generated method stub
-		System.out.println("Tipos de trabajos");
-		System.out.println("1 ReparaciÃ³n mecÃ¡nica");
-		System.out.println("2 ReparaciÃ³n chapa y pintura");
-		System.out.println("3 RevisiÃ³n");
-		System.out.print("QuÃ© tipo de trabajo? ");
+		System.out.println("Qué tipo de trabajo?");
+		System.out.println("1 Reparación mecánica");
+		System.out.println("2 Reparación chapa y pintura");
+		System.out.println("3 Revisión");
+		
 		Integer opcion = Taller.teclado.nextInt();
 		
 		switch(opcion){
@@ -36,5 +38,38 @@ public class Trabajo {
 		System.out.println("Tipo: "+this.getClass().toString());
 		System.out.println("Pendiente: "+pendiente);
 	}
+
+	public double calcularPrecio() {
+		double precio=0;
+		if(this.getClass().getName()=="tallerMecanico.ReparacionMecanica"){
+			Reparacion reparacion = (Reparacion) this;
+			precio =(this.getHoras()*100) + (reparacion.materiales*1.25);			
+		}
+		else if(this.getClass().getName()=="tallerMecanico.ReparacionChapaYPintura"){
+			Reparacion reparacion = (Reparacion) this;
+			precio =(this.getHoras()*100) + (reparacion.materiales*1.5);
+		}
+		else if(this.getClass().getName()=="tallerMecanico.Revision"){
+			precio =(this.getHoras()*100) + 200;
+		}
+		return precio;
+	}
+
+	public void registrarHoras(double horas) {
+		this.horas = this.horas + horas;
+		if (horas >= getHorasTope()){
+			this.pendiente = false;
+		}
+	}
+
+	public double getHoras() {
+		return horas;
+	}
+
+	public double calcularHorasDisponibles() {
+		return getHorasTope() - horas;
+	}
+
+	public abstract double getHorasTope();
 
 }
